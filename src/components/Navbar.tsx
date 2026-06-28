@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Terminal, Sun, Moon, Lock, Unlock, Eye, FileText, Monitor, ChevronDown } from "lucide-react";
+import { Terminal, Sun, Moon, Lock, Unlock, Eye, FileText, Monitor, ChevronDown, Printer, Github } from "lucide-react";
 
 interface NavbarProps {
   onAdminToggle: () => void;
@@ -75,7 +75,7 @@ export default function Navbar({ onAdminToggle, isAdminMode, onViewAsVisitor, on
       }`}
     >
       {/* Brand logo */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
         <a href="#home" className="flex items-center gap-2.5 group">
           <div className="w-9 h-9 text-[11px] font-mono font-bold bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl flex items-center justify-center shadow-xs transition-transform duration-300 group-hover:scale-105">
             VM
@@ -84,6 +84,20 @@ export default function Navbar({ onAdminToggle, isAdminMode, onViewAsVisitor, on
             vetrivel<span className="text-zinc-400 font-normal">.arch</span>
           </span>
         </a>
+
+        {/* Print-optimized small help indicator with hover tooltip */}
+        <div id="print-guide-tooltip-wrapper" className="relative group/print flex items-center justify-center ml-1 select-none">
+          <span className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-350 hover:bg-slate-100/50 dark:hover:bg-slate-900/60 transition-colors duration-200 cursor-help">
+            <Printer size={13} />
+          </span>
+          <div className="absolute left-0 top-full mt-2 w-56 p-3 bg-slate-950 dark:bg-white text-white dark:text-slate-950 text-[10px] font-mono rounded-lg shadow-xl opacity-0 translate-y-1 group-hover/print:opacity-100 group-hover/print:translate-y-0 pointer-events-none transition-all duration-200 z-50 border border-slate-850 dark:border-slate-200 leading-normal">
+            <div className="font-bold flex items-center gap-1.5 text-blue-400 dark:text-blue-600 mb-1.5">
+              <Printer size={11} className="animate-pulse" />
+              <span>PRINT OPTIMIZED PROFILE</span>
+            </div>
+            This portfolio complies with standard paper metrics. Trigger <b>Ctrl+P</b> or <b>Cmd+P</b> to print or save directly as a clean PDF document.
+          </div>
+        </div>
       </div>
 
       {/* Center Nav Anchors */}
@@ -135,6 +149,30 @@ export default function Navbar({ onAdminToggle, isAdminMode, onViewAsVisitor, on
           </button>
         )}
 
+        {/* GitHub External Channel (No-Print) */}
+        <a
+          href="https://github.com/vetrivelm"
+          target="_blank"
+          rel="noopener noreferrer"
+          id="navbarGithubBtn"
+          title="Open GitHub Profile"
+          className="no-print flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-205 dark:border-slate-800 hover:border-slate-800 dark:hover:border-white bg-white dark:bg-slate-950 text-slate-700 dark:text-slate-350 text-[10.5px] font-mono font-bold tracking-wider uppercase transition-all duration-350 cursor-pointer shadow-3xs hover:bg-slate-50 dark:hover:bg-slate-900"
+        >
+          <Github size={13} className="shrink-0 text-slate-500" />
+          <span className="hidden sm:inline">GitHub</span>
+        </a>
+
+        {/* Global window print shortcut trigger button (No-Print) */}
+        <button
+          onClick={() => window.print()}
+          id="printPdfBtn"
+          title="Print Portfolio or Save as Document PDF"
+          className="no-print flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-blue-200 dark:border-blue-900/40 hover:border-blue-500/80 dark:hover:border-blue-400/80 bg-blue-50/50 dark:bg-blue-950/25 text-blue-600 dark:text-sky-400 text-[10.5px] font-mono font-bold tracking-wider uppercase transition-all duration-350 cursor-pointer shadow-3xs hover:shadow-2xs"
+        >
+          <Printer size={13} className="shrink-0" />
+          <span className="hidden sm:inline">Print PDF</span>
+        </button>
+
         {/* Dark/Light mode theme selector dropdown */}
         <div className="relative" id="theme-switcher-wrapper select-none">
           <button
@@ -143,9 +181,9 @@ export default function Navbar({ onAdminToggle, isAdminMode, onViewAsVisitor, on
             title="Toggle theme mode"
             className="h-8 px-2.5 rounded-xl flex items-center gap-1.5 border border-slate-200 dark:border-slate-805 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-200 text-xs font-mono cursor-pointer"
           >
-            {themeMode === "light" && <Sun size={13} className="text-amber-500 animate-spin duration-3000" />}
-            {themeMode === "dark" && <Moon size={13} className="text-indigo-400" />}
-            {themeMode === "system" && <Monitor size={13} className="text-emerald-400" />}
+            {themeMode === "light" && <Sun size={13} className="text-amber-500 theme-icon-animate" />}
+            {themeMode === "dark" && <Moon size={13} className="text-indigo-400 theme-icon-animate" />}
+            {themeMode === "system" && <Monitor size={13} className="text-emerald-400 theme-icon-animate" />}
             <span className="uppercase text-[9.5px] tracking-widest hidden sm:inline font-bold">{themeMode}</span>
             <ChevronDown size={11} className={`opacity-60 transition-transform duration-200 md:block hidden ${isThemeMenuOpen ? "rotate-180" : ""}`} />
           </button>

@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import ResumeModal from "./components/ResumeModal";
 import InteractiveBlueprint from "./components/InteractiveBlueprint";
 import Milestones from "./components/Milestones";
+import SkillMap from "./components/SkillMap";
 import AIChatbot from "./components/AIChatbot";
 import ProjectGallery from "./components/ProjectGallery";
 import BlogSection from "./components/BlogSection";
@@ -215,7 +216,10 @@ export default function App() {
             {/* 4. Timeline analytics charts */}
             <Milestones />
 
-            {/* 5. Project gallery block */}
+            {/* 5. Interactive Skill Map component using Recharts */}
+            <SkillMap />
+
+            {/* 6. Project gallery block */}
             <ProjectGallery projects={projects} />
 
             {/* 6. Blog segment chronicles */}
@@ -260,6 +264,16 @@ export default function App() {
               className="hover:text-slate-950 dark:hover:text-white text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-[10.5px]"
             >
               linkedin
+            </a>
+            <span className="text-slate-200 dark:text-slate-800 md:block hidden">·</span>
+
+            <a 
+              href="https://github.com/vetrivelm" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-slate-950 dark:hover:text-white text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider text-[10.5px]"
+            >
+              github
             </a>
             <span className="text-slate-200 dark:text-slate-800 md:block hidden">·</span>
 

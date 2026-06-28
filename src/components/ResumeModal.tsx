@@ -15,7 +15,8 @@ import {
   Globe, 
   SlidersHorizontal,
   ChevronDown,
-  Info
+  Info,
+  Github
 } from "lucide-react";
 
 interface ResumeModalProps {
@@ -257,6 +258,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   <span className="flex items-center gap-1"><Mail size={11} className="text-slate-500" /> vetrivelm02@gmail.com</span>
                   <span className="flex items-center gap-1"><Smartphone size={11} className="text-slate-500" /> (+91) 9916008877</span>
                   <span className="flex items-center gap-1"><Linkedin size={11} className="text-slate-500" /> linkedin.com/in/vetrivelm</span>
+                  <span className="flex items-center gap-1"><Github size={11} className="text-slate-500" /> github.com/vetrivelm</span>
                   <span className="flex items-center gap-1"><Globe size={11} className="text-slate-500" /> Bengaluru, India</span>
                 </div>
               </div>
