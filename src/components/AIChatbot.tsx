@@ -101,11 +101,15 @@ export default function AIChatbot() {
     } catch (err: any) {
       console.error(err);
       
+      const isGitHubPages = window.location.hostname.includes("github.io");
+      
       // Self-diagnose help for users context
       const errorMsg: Message = {
         id: `err-${Date.now()}`,
         role: "assistant",
-        content: "⚠️ **System Offline Notice**: I couldn't reach the Gemini AI API proxy. \n\nPlease ensure your **GEMINI_API_KEY** is configured correctly in the **Settings > Secrets** panel in the bottom-left of the AI Studio workspace interface."
+        content: isGitHubPages 
+          ? "✨ **Vetriebot Notice**: Since this portfolio is currently running in static mode on **GitHub Pages**, my live AI brain is resting.\n\nTo connect directly with Vetrivel or explore opportunities, you can use these active channels:\n\n- 📧 **Email:** vetrivelm02@gmail.com\n- 📱 **Mobile:** (+91) 9916008877\n- 💼 **LinkedIn:** linkedin.com/in/vetrivelm\n- 📡 **GitHub:** github.com/vetrivelm\n\nAlternatively, feel free to explore all technical deep dives and project challenges in the interactive **Project Portfolio** section on this page!"
+          : "⚠️ **System Offline Notice**: I couldn't reach the Gemini AI API proxy. \n\nPlease ensure your **GEMINI_API_KEY** is configured correctly in the **Settings > Secrets** panel in the bottom-left of the AI Studio workspace interface."
       };
       setMessages(prev => [...prev, errorMsg]);
     } finally {
